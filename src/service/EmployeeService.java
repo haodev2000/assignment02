@@ -81,17 +81,23 @@ public class EmployeeService implements EmployeeInterface {
     }
 
     @Override
-    public void deleteEmployee(List<Employee> listEmployee, int id) {
-        System.out.println("Danh sách sau khi xóa phần tử có ID = " + id);
-        Employee e;
+    public void deleteEmployee(List<Employee> listEmployee, String id) {
+        Employee e = null;
+
         for (int i  = 0; i < listEmployee.size();i++){
-            if(listEmployee.get(i).getId().equals(id)){
+            if((listEmployee.get(i).getId()).equals(id)){
                 e = listEmployee.get(i);
                 Room r = e.getRoomF();
                 roomService.deleteEmployeeinRoom(r, e);
+                listEmployee.remove(e);
+                System.out.println("Xóa thành công !");
                 break;
             }
 
+        }
+
+        if (e==null){
+            System.out.println("Xóa không thành công !");
         }
     }
 

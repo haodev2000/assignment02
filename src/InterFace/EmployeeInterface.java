@@ -9,7 +9,7 @@ import java.util.List;
 public interface EmployeeInterface {
     void getListEmp(List<Employee> list);
     void addEmployee(ArrayList<Room> listRoom, ArrayList<Employee> listEmployee);
-    void deleteEmployee(List<Employee> listEmployee , int id);
+    void deleteEmployee(List<Employee> listEmployee , String id);
     void updateEmployee( ArrayList<Employee> listEmployee, String idToUpdate);
 
 }

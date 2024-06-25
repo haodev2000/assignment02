@@ -29,10 +29,9 @@ public class Main {
             System.out.println("1. Nhập số lượng phòng ban");
             System.out.println("2. Danh sách phòng ban");
             System.out.println("3. Thêm Employee");
-            System.out.println("4. Xóa Employee");
-            System.out.println("5. Cập nhật Employee");
-            System.out.println("6. Xóa Room");
-            System.out.println("7. Thoát");
+            System.out.println("4. Cập nhật Employee");
+            System.out.println("5. Xóa Room");
+            System.out.println("6. Thoát");
             System.out.print("Chọn chức năng: ");
 
             int choice = sc.nextInt();
@@ -56,25 +55,26 @@ public class Main {
 
                     break;
 
-                case 4:
-                    System.out.println("Nhập id nhân viên cần xóa: ");
-                    int removeID = sc.nextInt();
-                    sc.nextLine(); // Consume newline left-over
-                    employeeService.deleteEmployee(listEmployee, removeID);
-                    break;
+//                case 4:
+//                    System.out.println("Nhập id nhân viên cần xóa: ");
+//                    String removeID =
+//                    sc.next();
+//                    System.out.println(removeID+"----------");
+//                    employeeService.deleteEmployee(listEmployee, removeID);
+//                    break;
 
-                case 5:
+                case 4:
                     System.out.print("Nhập ID của nhân viên cần cập nhật: ");
                     String idToUpdate = sc.nextLine();
                     employeeService.updateEmployee(listEmployee, idToUpdate);
                     break;
 
-                case 6:
+                case 5:
                     System.out.print("Nhập ID room cần xóa: ");
                     int idDelete = sc.nextInt();
                     roomService.deleteRoom(listRoom, idDelete);
                     break;
-                case 7:
+                case 6:
                     exit = true;
                     break;
                 default:

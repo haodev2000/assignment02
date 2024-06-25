@@ -128,7 +128,10 @@ public class RoomService implements RoomInterFace {
 
     @Override
     public void deleteEmployeeinRoom(Room room, Employee e){
-       room.getEmployees().remove(e);
+        if(room!= null){
+            room.getEmployees().remove(e);
+        }
+
     }
 
     @Override
