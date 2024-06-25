@@ -11,4 +11,5 @@ public interface EmployeeInterface {
     void addEmployee(ArrayList<Room> listRoom, ArrayList<Employee> listEmployee);
     void deleteEmployee(List<Employee> listEmployee , int id);
     void updateEmployee( ArrayList<Employee> listEmployee, String idToUpdate);
+
 }

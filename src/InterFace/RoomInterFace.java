@@ -10,5 +10,7 @@ public interface RoomInterFace {
    void createRoom(List<Room> listRoom);
    void createRoomEmployee(List<Room> listRoom, List<Employee> listEmployee , int soLuongRoom);
    void deleteRoom(List<Room> listRoom, int id);
+   void deleteEmployeeinRoom(Room room, Employee e);
+   void addEmployeetoRoom(Room r , Employee e);
 
 }

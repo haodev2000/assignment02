@@ -9,9 +9,15 @@ public class Employee  {
     private String id;
     private String name;
     private int age;
-    private LocalDateTime dateJoin;
-    private String roomName;
+    private Room roomF;
 
+    public Room getRoomF() {
+        return roomF;
+    }
+
+    public void setRoomF(Room roomF) {
+        this.roomF = roomF;
+    }
 
     public Employee() {
     }
@@ -48,21 +54,4 @@ public class Employee  {
         this.age = age;
     }
 
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-
-    }
-
-
-    public LocalDateTime getDateJoin() {
-        return dateJoin;
-    }
-
-    public void setDateJoin(LocalDateTime dateJoin) {
-        this.dateJoin = dateJoin;
-    }
 }

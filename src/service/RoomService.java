@@ -106,7 +106,7 @@ public class RoomService implements RoomInterFace {
                 int ageE = sc.nextInt();
                 emp.setAge(ageE);
 
-                emp.setRoomName(room.getName());
+
 
                 listEmp.add(emp);
                 listEmployee.add(emp);
@@ -123,6 +123,18 @@ public class RoomService implements RoomInterFace {
     @Override
     public void deleteRoom(List<Room> listRoom, int id){
         listRoom.removeIf(item ->Integer.parseInt(item.getId()) == id);
+    }
+
+
+    @Override
+    public void deleteEmployeeinRoom(Room room, Employee e){
+       room.getEmployees().remove(e);
+    }
+
+    @Override
+    public void addEmployeetoRoom(Room r , Employee e){
+
+        r.getEmployees().add(e);
     }
 
 }

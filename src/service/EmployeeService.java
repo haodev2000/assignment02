@@ -11,13 +11,15 @@ import java.util.Scanner;
 public class EmployeeService implements EmployeeInterface {
 
 
+    RoomService roomService = new RoomService();
 
     //List Employee
     @Override
     public void getListEmp(List<Employee> list){
         for (Employee e : list){
             System.out.println("STT:" + e.getStt() + " ID: " + e.getId()
-                    + " NAME:"  + e.getName() + " ROOM:" + e.getRoomName());
+                    + " NAME:"  + e.getName() + " ROOM:"
+                    + e.getRoomF() != null ? e.getRoomF().getName() : "None");
         }
     }
 
@@ -47,27 +49,69 @@ public class EmployeeService implements EmployeeInterface {
         employee.setAge(ageE);
         sc.nextLine();
 
-        System.out.println("Nhập room: ");
-        String roomE = sc.nextLine();
-        employee.setRoomName(roomE);
-
-        for (Room r : listRoom){
-            if(employee.getRoomName().contains(r.getName())){
-                listEmployee.add(employee);
-            }else {
-                System.out.println("Thêm thất bại !");
-
-            }
+        //
+        for (Room r : listRoom) {
+            System.out.println("ID: " + r.getId() + "   Name:" + r.getName());
         }
+        System.out.println("Nhập id room: ");
+        String roomID = sc.nextLine();
 
+
+        Room room = new Room();
+        for (Room r : listRoom) {
+           if(r.getId().equals(roomID)){
+               room = r;
+               roomService.addEmployeetoRoom(room, employee);
+
+           }
+        }
+        employee.setRoomF(room);
+
+        listEmployee.add(employee);
+
+//        for (Room r : listRoom){
+//            if(employee.getRoomName().contains(r.getName())){
+//                listEmployee.add(employee);
+//            }else {
+//                System.out.println("Thêm thất bại !");
+//
+//            }
+//        }
+
+    }
+
+    @Override
+    public void deleteEmployee(List<Employee> listEmployee, int id) {
+        System.out.println("Danh sách sau khi xóa phần tử có ID = " + id);
+        Employee e;
+        for (int i  = 0; i < listEmployee.size();i++){
+            if(listEmployee.get(i).getId().equals(id)){
+                e = listEmployee.get(i);
+                Room r = e.getRoomF();
+                roomService.deleteEmployeeinRoom(r, e);
+                break;
+            }
+
+        }
     }
 
     // Delete Employee
-    @Override
-    public void deleteEmployee(List<Employee> listEmployee , int id){
-        System.out.println("Danh sách sau khi xóa phần tử có ID = " + id);
-        listEmployee.removeIf(item ->Integer.parseInt(item.getId()) == id);
-    }
+
+//    public void deleteEmployee(List<Employee> listEmployee , String id){
+//        System.out.println("Danh sách sau khi xóa phần tử có ID = " + id);
+//        Employee e;
+//        for (int i  = 0; i < listEmployee.size();i++){
+//            if(listEmployee.get(i).getId().equals(id)){
+//                e = listEmployee.get(i);
+//                Room r = e.getRoomF();
+//                roomService.deleteEmployeeinRoom(r, e);
+//                break;
+//            }
+//
+//        }
+////        roomService.deleteEmployeeinRoom();
+////        listEmployee.removeIf(item ->item.getId().equals(id));
+//    }
 
     // Update Employee
     @Override
