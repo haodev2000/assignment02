@@ -1,5 +1,7 @@
 package model;
 
+import InterFace.RoomInterFace;
+
 import java.time.LocalDateTime;
 
 public class Employee  {
@@ -9,6 +11,7 @@ public class Employee  {
     private int age;
     private LocalDateTime dateJoin;
     private String roomName;
+
 
     public Employee() {
     }
@@ -61,13 +64,5 @@ public class Employee  {
 
     public void setDateJoin(LocalDateTime dateJoin) {
         this.dateJoin = dateJoin;
-    }
-
-    public Employee(int stt, String id, String name, int age) {
-        this.stt = stt;
-        this.id = id;
-        this.name = name;
-        this.age = age;
-
     }
 }

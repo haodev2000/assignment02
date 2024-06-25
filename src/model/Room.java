@@ -8,10 +8,8 @@ public class Room {
     private String name;
     private List<Employee> employees;
 
-
     public Room() {
     }
-
 
     public int getStt() {
         return stt;

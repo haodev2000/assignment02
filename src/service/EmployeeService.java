@@ -2,25 +2,28 @@ package service;
 
 import model.Employee;
 import model.Room;
+import InterFace.EmployeeInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class EmployeeService {
+public class EmployeeService implements EmployeeInterface {
 
 
 
     //List Employee
-    public static void getListEmp(List<Employee> list){
+    @Override
+    public void getListEmp(List<Employee> list){
         for (Employee e : list){
-            System.out.println("STT:" + e.getName() + " ID: " + e.getId()
+            System.out.println("STT:" + e.getStt() + " ID: " + e.getId()
                     + " NAME:"  + e.getName() + " ROOM:" + e.getRoomName());
         }
     }
 
     // Add Employee
-    public static void addEmployee(ArrayList<Room> listRoom, ArrayList<Employee> listEmployee){
+    @Override
+    public void addEmployee(ArrayList<Room> listRoom, ArrayList<Employee> listEmployee){
         Scanner sc = new Scanner(System.in);
         Employee employee = new Employee();
 
@@ -53,19 +56,22 @@ public class EmployeeService {
                 listEmployee.add(employee);
             }else {
                 System.out.println("Thêm thất bại !");
+
             }
         }
 
     }
 
     // Delete Employee
-    public static void deleteEmployee(List<Employee> listEmployee , int id){
+    @Override
+    public void deleteEmployee(List<Employee> listEmployee , int id){
         System.out.println("Danh sách sau khi xóa phần tử có ID = " + id);
         listEmployee.removeIf(item ->Integer.parseInt(item.getId()) == id);
     }
 
     // Update Employee
-    public static void updateEmployee( ArrayList<Employee> listEmployee, String idToUpdate){
+    @Override
+    public void updateEmployee( ArrayList<Employee> listEmployee, String idToUpdate){
         Scanner sc = new Scanner(System.in);
         boolean found = false;
 

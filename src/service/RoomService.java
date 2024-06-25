@@ -2,27 +2,34 @@ package service;
 
 import model.Employee;
 import model.Room;
+import InterFace.RoomInterFace;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class RoomService {
+public class RoomService implements RoomInterFace {
 
     // Get list room
-    public static void listPhongBan(List<Room> listRoom) {
+    @Override
+    public void listPhongBan(List<Room> listRoom) {
         for (Room room : listRoom) {
             System.out.println("Số thứ tự:" + room.getStt() +
                     " ID:" + room.getId() + " Name:" + room.getName());
+
             System.out.println("Danh sách nhân viên của phòng " + room.getName());
             for (Employee emp : room.getEmployees()) {
                 System.out.println("     Số thứ tự:" + emp.getStt() +
                         " ID:" + emp.getId() + " Name:" + emp.getName());
             }
+
+            System.out.println();
         }
     }
 
-    public static void createRoom(List<Room> listRoom){
+    // Create Room
+    @Override
+    public void createRoom(List<Room> listRoom){
         System.out.println("--------------Thêm Room-----------------");
         Scanner sc = new Scanner(System.in);
         // Nhập danh sách room
@@ -40,7 +47,9 @@ public class RoomService {
         }
     }
 
-    public static void createRoomEmployee(List<Room> listRoom, List<Employee> listEmployee ,int soLuongRoom){
+    // Create Room and Add employee
+    @Override
+    public void createRoomEmployee(List<Room> listRoom, List<Employee> listEmployee ,int soLuongRoom){
 
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < soLuongRoom; i++){
@@ -110,7 +119,9 @@ public class RoomService {
         }
     }
 
-    public static void deleteRoom(List<Room> listRoom, int id){
+    // Delete room
+    @Override
+    public void deleteRoom(List<Room> listRoom, int id){
         listRoom.removeIf(item ->Integer.parseInt(item.getId()) == id);
     }
 
