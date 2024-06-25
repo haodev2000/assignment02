@@ -123,7 +123,7 @@ public class EmployeeService implements EmployeeInterface {
             if(e.getId().equals(idToUpdate)){
 
                 System.out.print("Nhập tên mới cho phần tử: ");
-                String newName = sc.nextLine();
+                String newName = sc.next();
                 e.setName(newName);
                 found = true;
                 break;
